@@ -15,71 +15,125 @@ define(function () {
 
 //---------- Классы QuadTree ----------------
 
+    /**
+     * @param x {int}
+     * @param y {int}
+     * @constructor
+     */
     var Point = function (x, y)
     {
         this.x = x;
         this.y = y;
     };
+    Point.prototype.copy = function ()
+    {
+        return new Point(this.x, this.y);
+    };
+    /**
+     * @param w {int}
+     * @param h {int}
+     * @constructor
+     */
     var Size = function (w, h)
     {
+        w = w ? w : 1;
+        h = h ? h : 1;
         this.w = w;
         this.h = h;
     };
+    Size.prototype.copy = function ()
+    {
+        return new Size(this.w, this.h);
+    };
     /**
-     * @param origin Point
-     * @param size   Size
+     * @param origin {Point}
+     * @param size   {Size}
      * @constructor
      */
     var Rect = function (origin, size)
     {
-        this.origin = origin;
-        this.size = size;
+        this.origin = origin.copy();
+        this.size = size.copy();
+    };
+    Rect.prototype.copy = function ()
+    {
+        return new Rect(this.origin, this.size);
     };
     /**
-     * @param center  Point
-     * @param halfDim Size
+     * @param center    {Point}
+     * @param halfSize  {Size}
      * @constructor
      */
-    var AABB = function (center, halfDim)
+    var AABB = function (center, halfSize)
     {
-        this.center = center;
-        this.halfDim = halfDim;
+        this.center = center.copy();
+        this.halfSize = halfSize.copy();
+    };
+    AABB.prototype.copy = function ()
+    {
+        return new AABB(this.center, this.halfSize);
     };
     /**
-     * @param point Array [x,y]
+     * @param point {[x,y]}
      */
     AABB.prototype.containsPoint = function(point)
     {
         var x = point[0];
         var y = point[1];
-        if ( (x >= ( this.center.x - this.halfDim.w ) && (x < ( this.halfDim.w + this.center.x ) )) &&
-             (y >= ( this.center.y - this.halfDim.h ) && (y < ( this.halfDim.h + this.center.y ) )) ) {
+
+        var leftTop     = new Point(this.center.x - this.halfSize.w, this.center.y - this.halfSize.h), // -1
+            rightBottom = new Point(this.center.x + this.halfSize.w, this.center.y + this.halfSize.h)
+        ;
+
+        var a = {
+            x:point[0],
+            y:point[1],
+            leftX:leftTop.x,
+            leftY:leftTop.y,
+            rightX:rightBottom.x,
+            rightY:rightBottom.y
+        }
+        log("comparing:", a);
+
+        if ( (x >= leftTop.x && x < rightBottom.x) &&
+             (y >= leftTop.y && y < rightBottom.y)) {
             return true;
         }
 
         return false;
     };
+    /**
+     * @param otherAABB     {AABB}
+     * @returns {boolean}
+     */
     AABB.prototype.intersectsAABB = function (otherAABB)
     {
-        var leftTop     = new Point(this.center.x - this.halfDim.w, this.center.y - this.halfDim.h), // -1
-            rightTop    = new Point(this.center.x + this.halfDim.w, this.center.y - this.halfDim.h),
-            rightBottom = new Point(this.center.x + this.halfDim.w, this.center.y + this.halfDim.h),
-            leftBottom  = new Point(this.center.x - this.halfDim.w, this.center.y + this.halfDim.h)
+        var leftTop     = new Point(this.center.x - this.halfSize.w, this.center.y - this.halfSize.h), // -1
+            rightTop    = new Point(this.center.x + this.halfSize.w, this.center.y - this.halfSize.h),
+            rightBottom = new Point(this.center.x + this.halfSize.w, this.center.y + this.halfSize.h),
+            leftBottom  = new Point(this.center.x - this.halfSize.w, this.center.y + this.halfSize.h)
         ;
 
-        var oLeftTop     = new Point(otherAABB.center.x - otherAABB.halfDim.w, otherAABB.center.y - otherAABB.halfDim.h),
-            oRightTop    = new Point(otherAABB.center.x + otherAABB.halfDim.w, otherAABB.center.y - otherAABB.halfDim.h),
-            oRightBottom = new Point(otherAABB.center.x + otherAABB.halfDim.w, otherAABB.center.y + otherAABB.halfDim.h),
-            oLeftBottom  = new Point(otherAABB.center.x - otherAABB.halfDim.w, otherAABB.center.y + otherAABB.halfDim.h)
+        var oLeftTop     = new Point(otherAABB.center.x - otherAABB.halfSize.w, otherAABB.center.y - otherAABB.halfSize.h),
+            oRightTop    = new Point(otherAABB.center.x + otherAABB.halfSize.w, otherAABB.center.y - otherAABB.halfSize.h),
+            oRightBottom = new Point(otherAABB.center.x + otherAABB.halfSize.w, otherAABB.center.y + otherAABB.halfSize.h),
+            oLeftBottom  = new Point(otherAABB.center.x - otherAABB.halfSize.w, otherAABB.center.y + otherAABB.halfSize.h)
         ;
         var otherPoints = [oLeftTop, oRightTop, oRightBottom, oLeftBottom];
 
+        if ( leftTop.x  == oLeftTop.x  && leftTop.y  == oLeftTop.y     &&
+             rightTop.x == oRightTop.x && rightTop.y == oRightTop.y    &&
+             rightBottom.x == oRightBottom.x && rightBottom.y == oRightBottom.y &&
+             leftBottom.x  == oLeftBottom.x  && leftBottom.y  == oLeftBottom.y ) {
+            return true;
+        }
+
         for (var i in otherPoints) {
             var point = otherPoints[i];
-            if ( point.x > leftTop.x     && point.y > leftTop.y     &&
-                 point.x < rightTop.x    && point.y > rightTop.y    &&
-                 point.x < rightBottom.x && point.y < rightBottom.y &&
-                 point.x > leftBottom.x  && point.y < leftBottom.y  ) {
+            if ( point.x >= leftTop.x     && point.y >= leftTop.y     &&
+                 point.x <= rightTop.x    && point.y >= rightTop.y    &&
+                 point.x <= rightBottom.x && point.y <= rightBottom.y &&
+                 point.x >= leftBottom.x  && point.y <= leftBottom.y  ) {
                 return true;
             }
         }
@@ -88,18 +142,14 @@ define(function () {
     };
 
     /**
-     * @param boundary AABB
+     * @param boundary {AABB}
      * @constructor
      */
     var QuadTreeNode = function (boundary)
     {
         log("QuadTreeNode AABB:", boundary);
 
-        var center = new Point(boundary.center.x, boundary.center.y),
-            halfSize = new Size(boundary.halfDim.w, boundary.halfDim.h)
-        ;
-
-        this.boundary = new AABB(center, halfSize);
+        this.boundary = boundary.copy();
 
         this.capacity = 4;
 
@@ -110,7 +160,10 @@ define(function () {
         this.southWest = undefined;
         this.southEast = undefined;
     };
-
+    /**
+     * @param point {Point}
+     * @returns     {boolean}
+     */
     QuadTreeNode.prototype.insert = function (point)
     {
         log("point", point);
@@ -147,7 +200,7 @@ define(function () {
     {
         var aabb, center, halfSize, oldCenter;
 
-        halfSize = new Size(this.boundary.halfDim.w / 2, this.boundary.halfDim.h / 2);
+        halfSize = new Size(this.boundary.halfSize.w / 2, this.boundary.halfSize.h / 2);
         oldCenter = this.boundary.center;
 
         center = new Point(oldCenter.x - halfSize.w, oldCenter.y - halfSize.h);
@@ -167,7 +220,7 @@ define(function () {
         this.southEast = new QuadTreeNode(aabb);
     };
     /**
-     * @param range AABB
+     * @param range {AABB}
      */
     QuadTreeNode.prototype.queryRange = function (range)
     {
@@ -207,12 +260,11 @@ define(function () {
 //---------- end Классы QuadTree ----------------
 
     /**
-     * @param tiles Array of pairs [x,y]
+     * @param tiles {[[x,y], [x,y],...]}
      * @constructor
      */
     var QuadTree = function (tiles) {
         // определяем границы
-
         var minX = 0,
             maxX = 0,
             minY = 0,
@@ -228,13 +280,14 @@ define(function () {
             maxY = Math.max(maxY, tiles[i][1]);
         }
 
-
-        var halfSize   = new Size((maxX - minX) / 2 + 1, (maxY - minY) / 2 + 1),
-            center = new Point(minX + halfSize.w, minY + halfSize.h)
+        var width = maxX - minX,
+            height = maxY - minY
         ;
-        var aabb = new AABB(center, halfSize);
+        width  = minX > 0 ? width  : width  + 1;
+        height = minY > 0 ? height : height + 1;
 
-        this.rootNode = new QuadTreeNode(aabb);
+        var rect = new Rect(new Point(minX, minY), new Size(width, height));
+        this.rootNode = new QuadTreeNode(this.aabbFromRect(rect));
 
         var success = false;
         for (i in tiles) {
@@ -245,17 +298,24 @@ define(function () {
 
     };
     /**
-     * @param rect Rect
+     * @param rect  {Rect}
+     * @returns     {AABB}
+     */
+    QuadTree.prototype.aabbFromRect = function (rect)
+    {
+        var halfSize = new Size(rect.size.w / 2, rect.size.h / 2),
+            center   = new Point(rect.origin.x + halfSize.w, rect.origin.y + halfSize.h);
+
+        return new AABB(center, halfSize);
+    };
+    /**
+     * @param rect {{x:, y:, w:, h:}}
      */
     QuadTree.prototype.tilesInRect = function (rect)
     {
         rect = new Rect(new Point(rect.x, rect.y), new Size(rect.w, rect.h));
 
-        var halfSize = new Size(rect.size.w / 2, rect.size.h / 2),
-            center   = new Point(rect.origin.x + halfSize.w, rect.origin.y + halfSize.h);
-
-        var aabb = new AABB(center, halfSize);
-        return this.rootNode.queryRange(aabb);
+        return this.rootNode.queryRange(this.aabbFromRect(rect));
     };
 
     return QuadTree;

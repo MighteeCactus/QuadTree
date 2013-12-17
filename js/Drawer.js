@@ -18,6 +18,9 @@ define(function () {
     {
         var ctx = this.context;
 
+        //clear canvas
+        ctx.canvas.width = ctx.canvas.width;
+
         ctx.strokeStyle = '#000000';
         ctx.fillStyle = '#FFFF00';
 

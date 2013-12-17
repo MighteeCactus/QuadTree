@@ -7,7 +7,35 @@ require(["QuadTree", "Drawer", "tilesForLayout"], function(QuadTree, Drawer, til
 
     var quadTree = new QuadTree(tilesForLayout);
 
-    var tiles = quadTree.tilesInRect({x:0,y:1,w:2,h:2});
+
+    var xInput = document.getElementById("x"),
+        yInput = document.getElementById("y"),
+        wInput = document.getElementById("w"),
+        hInput = document.getElementById("h"),
+        submit = document.getElementById("draw")
+    ;
+
+    submit.onclick = function () {
+        var rect = {
+            x: parseInt(xInput.value),
+            y: parseInt(yInput.value),
+            w: parseInt(wInput.value),
+            h: parseInt(hInput.value)
+        };
+
+        console.clear();
+
+        console.log(rect);
+
+        drawer.drawTiles(quadTree.tilesInRect(rect));
+    };
+
+    xInput.value = 0;
+    yInput.value = 0;
+    wInput.value = 2;
+    hInput.value = 1;
+
+    var tiles = quadTree.tilesInRect({x:0,y:0,w:4,h:2});
 
     console.log("tiles:");
     console.log(tiles);

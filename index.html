@@ -11,12 +11,30 @@
             height: 400px;
         }
 
+        .controls {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            padding: 5px;
+        }
+        label {
+            width: 30px;
+        }
+
     </style>
+
 </head>
 <body>
 
 <div>
     <canvas class="plot" id="plot" width="400px" height="400px"></canvas>
+    <div class="controls">
+        <p><span width="20px">x:</span><input type="text" id="x"></p>
+        <p><span width="20px">y:</span><input type="text" id="y"></p>
+        <p><span width="20px">w:</span><input type="text" id="w"></p>
+        <p><span width="20px">h:</span><input type="text" id="h"></p>
+        <p><input type="submit" id="draw"></p>
+    </div>
 </div>
 
 </body>
