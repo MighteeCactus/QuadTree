@@ -14,12 +14,57 @@ define(function () {
         this.offset = {x:this.tileInset.width, y:this.tileInset.height};
     };
 
+    Drawer.prototype.clearCanvas = function()
+    {
+        this.context.canvas.width = this.context.canvas.width;
+    };
+
+    Drawer.prototype.drawRectForTiles = function (tiles, color)
+    {
+        var ctx = this.context;
+
+        var i;
+        var minX, maxX, minY, maxY;
+
+        minX = maxX = tiles[0][0];
+        minY = maxY = tiles[0][1];
+
+        for (i in tiles) {
+            minX = Math.min(minX, tiles[i][0]);
+            maxX = Math.max(maxX, tiles[i][0]);
+            minY = Math.min(minY, tiles[i][1]);
+            maxY = Math.max(maxY, tiles[i][1]);
+        }
+
+        var width = maxX - minX + 1,
+            height = maxY - minY + 1
+        ;
+
+        var tileSizeWithInsetX = ( this.tileSize.width +  this.tileInset.width    ),
+            tileSizeWithInsetY = ( this.tileSize.height +  this.tileInset.height  )
+        ;
+        width  = width  * tileSizeWithInsetX + this.offset.x;
+        height = height * tileSizeWithInsetY + this.offset.y;
+
+        ctx.fillStyle = color;
+
+        ctx.beginPath();
+
+        var x = tileSizeWithInsetX * minX;
+        var y = tileSizeWithInsetY * minY;
+
+        ctx.rect(x, y, width, height);
+
+        ctx.closePath();
+
+        ctx.fill();
+    };
+
     Drawer.prototype.drawTiles = function (tiles)
     {
         var ctx = this.context;
 
-        //clear canvas
-        ctx.canvas.width = ctx.canvas.width;
+        this.drawRectForTiles(tiles, "darkgray");
 
         ctx.strokeStyle = '#000000';
         ctx.fillStyle = '#FFFF00';

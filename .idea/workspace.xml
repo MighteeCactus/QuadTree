@@ -67,25 +67,25 @@
       <file leaf-file-name="QuadTree.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/QuadTree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="235" column="36" selection-start="7107" selection-end="7107" vertical-scroll-proportion="0.0" vertical-offset="3300" max-vertical-offset="4935">
+            <state line="289" column="66" selection-start="8831" selection-end="8831" vertical-scroll-proportion="1.962963" vertical-offset="4388" max-vertical-offset="4935">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="69" selection-start="885" selection-end="885" vertical-scroll-proportion="-12.875" vertical-offset="201" max-vertical-offset="690">
+            <state line="31" column="69" selection-start="675" selection-end="675" vertical-scroll-proportion="0.59090906" vertical-offset="140" max-vertical-offset="690">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="53" selection-start="951" selection-end="951" vertical-scroll-proportion="0.6412556" vertical-offset="126" max-vertical-offset="795">
+            <state line="40" column="56" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="870">
               <folding />
             </state>
           </provider>
@@ -94,7 +94,7 @@
       <file leaf-file-name="Drawer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Drawer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="22" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="990">
+            <state line="40" column="9" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1665">
               <folding />
             </state>
           </provider>
@@ -112,7 +112,7 @@
       <file leaf-file-name="tilesForLayout.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/tilesForLayout.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="6" selection-start="748" selection-end="748" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+            <state line="10" column="7" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
               <folding />
             </state>
           </provider>
@@ -131,11 +131,11 @@
         <option value="$PROJECT_DIR$/QuadTree.js" />
         <option value="$PROJECT_DIR$/js/draw.js" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/Drawer.js" />
-        <option value="$PROJECT_DIR$/js/QuadTree.js" />
         <option value="$PROJECT_DIR$/js/tilesForLayout.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/js/Drawer.js" />
+        <option value="$PROJECT_DIR$/js/QuadTree.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -218,7 +218,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -489,12 +489,12 @@
       <workItem from="1387197747670" duration="122000" />
       <workItem from="1387197899543" duration="24291000" />
       <workItem from="1387261192536" duration="125000" />
-      <workItem from="1387261358175" duration="10603000" />
+      <workItem from="1387261358175" duration="13221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35141000" />
+    <option name="totallyTimeSpent" value="37759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="238" y="22" width="1611" height="1000" extended-state="0" />
@@ -507,7 +507,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23212321" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33663365" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -544,12 +544,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/QuadTree.js</url>
-          <line>227</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/js/Drawer.js</url>
+          <line>46</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="19" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -649,37 +649,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="69" selection-start="885" selection-end="885" vertical-scroll-proportion="-12.875" vertical-offset="201" max-vertical-offset="690">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Drawer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="22" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="990">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/QuadTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="36" selection-start="7107" selection-end="7107" vertical-scroll-proportion="0.0" vertical-offset="3300" max-vertical-offset="4935">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/tilesForLayout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="6" selection-start="748" selection-end="748" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+        <state line="10" column="7" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="53" selection-start="951" selection-end="951" vertical-scroll-proportion="0.6412556" vertical-offset="126" max-vertical-offset="795">
+        <state line="40" column="56" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Drawer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="9" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/QuadTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="289" column="66" selection-start="8831" selection-end="8831" vertical-scroll-proportion="1.962963" vertical-offset="4388" max-vertical-offset="4935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="69" selection-start="675" selection-end="675" vertical-scroll-proportion="0.59090906" vertical-offset="140" max-vertical-offset="690">
           <folding />
         </state>
       </provider>

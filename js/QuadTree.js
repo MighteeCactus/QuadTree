@@ -280,11 +280,11 @@ define(function () {
             maxY = Math.max(maxY, tiles[i][1]);
         }
 
-        var width = maxX - minX,
-            height = maxY - minY
+        var width = maxX - minX + 1,
+            height = maxY - minY + 1
         ;
-        width  = minX > 0 ? width  : width  + 1;
-        height = minY > 0 ? height : height + 1;
+//        width  = minX > 0 ? width  : width  + 1;
+//        height = minY > 0 ? height : height + 1;
 
         var rect = new Rect(new Point(minX, minY), new Size(width, height));
         this.rootNode = new QuadTreeNode(this.aabbFromRect(rect));

@@ -15,6 +15,11 @@ require(["QuadTree", "Drawer", "tilesForLayout"], function(QuadTree, Drawer, til
         submit = document.getElementById("draw")
     ;
 
+    xInput.value = 0;
+    yInput.value = 0;
+    wInput.value = 2;
+    hInput.value = 1;
+
     submit.onclick = function () {
         var rect = {
             x: parseInt(xInput.value),
@@ -27,19 +32,19 @@ require(["QuadTree", "Drawer", "tilesForLayout"], function(QuadTree, Drawer, til
 
         console.log(rect);
 
+        drawer.clearCanvas();
+        drawer.drawRectForTiles(tilesForLayout, "lightgoldenrodyellow");
         drawer.drawTiles(quadTree.tilesInRect(rect));
     };
 
-    xInput.value = 0;
-    yInput.value = 0;
-    wInput.value = 2;
-    hInput.value = 1;
-
-    var tiles = quadTree.tilesInRect({x:0,y:0,w:4,h:2});
+//    var tiles = quadTree.tilesInRect({x:0,y:0,w:4,h:2});
+    var tiles = quadTree.tilesInRect({x:1,y:0,w:2,h:1});
 
     console.log("tiles:");
     console.log(tiles);
 
+    drawer.clearCanvas();
+    drawer.drawRectForTiles(tilesForLayout, "lightgoldenrodyellow");
     drawer.drawTiles(tiles);
 
 });
