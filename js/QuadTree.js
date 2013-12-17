@@ -313,7 +313,7 @@ define(function () {
      */
     QuadTree.prototype.tilesInRect = function (rect)
     {
-        rect = new Rect(new Point(rect.x, rect.y), new Size(rect.w, rect.h));
+        var rect = new Rect(new Point(rect.x, rect.y), new Size(rect.w, rect.h));
 
         return this.rootNode.queryRange(this.aabbFromRect(rect));
     };
